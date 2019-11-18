@@ -19,14 +19,14 @@ function prompt_command_fancy() {
         local exitsymbol=" "
     fi
 
-    if [[ $(/bin/id -u) = 0 ]]; then
+    if [[ $(/usr/xpg4/bin/id -u) = 0 ]]; then
         local usersymbol=" "
     else
         local usersymbol=" "
     fi
 
     W=${workingdir}
-    if [[ $(echo ${W} | /bin/grep -o '/' | /bin/wc -l) -gt ${split} ]]; then
+    if [[ $(echo ${W} | /opt/csw/bin/ggrep -o '/' | /bin/wc -l) -gt ${split} ]]; then
         workingdir=$(echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}")
     fi
 
